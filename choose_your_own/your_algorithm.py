@@ -1,4 +1,3 @@
-#!/usr/bin/python
 
 import matplotlib.pyplot as plt
 from prep_terrain_data import makeTerrainData
@@ -32,10 +31,14 @@ plt.show()
 ### visualization code (prettyPicture) to show you the decision boundary
 
 
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
 
-
-
-
+neigh = KNeighborsClassifier(n_neighbors=3)
+neigh.fit(features_train, labels_train)
+pred = neigh.predict(features_test)
+acc = accuracy_score(labels_test, pred)
+print("accuracy:", acc)
 
 
 try:
